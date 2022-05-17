@@ -23,11 +23,11 @@ public class Article {
     }
 
     public int getId() {
-        return ID;
+        return id;
     }
 
     public void setId(int id) {
-        this.ID = ID;
+        this.id = id;
     }
 
     public int getTag() {
