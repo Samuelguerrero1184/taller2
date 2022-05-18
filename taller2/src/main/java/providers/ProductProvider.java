@@ -9,7 +9,7 @@ public class ProductProvider {
 
     public void createProduct(Product product) throws SQLException, ClassNotFoundException {
         DBConnection con = new DBConnection();
-        String sql = "INSERT INTO A00365567-Productos(id,nombre,tamano,precio)"
+        String sql = "INSERT INTO A00365567_Productos(id,nombre,tamano,precio)"
                 + "VALUES ($ID,'$NOMBRE','$TAMANO',$PRECIO)";
         sql = sql.replace("$ID",""+product.getId());
         sql = sql.replace("$NOMBRE", product.getNombre());

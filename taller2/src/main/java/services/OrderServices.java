@@ -38,7 +38,7 @@ public class OrderServices{
             provider.changeStatus(order);
             return Response
                     .status(200)
-                    .entity(new Message("info","Operación exitosa"))
+                    .entity(new Message("info","Completado"))
                     .build();
         }catch(Exception e){
             return Response

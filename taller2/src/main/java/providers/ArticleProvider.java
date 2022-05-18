@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ArticleProvider {
     public void createArticle(Article article) throws SQLException, ClassNotFoundException {
         DBConnection con = new DBConnection();
-        String sql = "INSERT INTO A00365567-Articulos(cantidad,id,tag)VALUES ($CANTIDAD,$ID,$TAG)";
+        String sql = "INSERT INTO A00365567_Articulos(cantidad,id,tag)VALUES ($CANTIDAD,$ID,$TAG)";
         sql = sql.replace("$CANTIDAD",""+article.getCantidad());
         sql = sql.replace("$ID",""+article.getId());
         sql = sql.replace("$TAG",""+article.getTag());
@@ -20,7 +20,7 @@ public class ArticleProvider {
     public void deleteArticle(int order, int product, int amount) throws SQLException, ClassNotFoundException {
         DBConnection con = new DBConnection();
 
-        String sql = "SELECT * FROM A00365567-Articulos"
+        String sql = "SELECT * FROM A00365567_Articulos"
                 +" WHERE id = $ORDER AND tag = $PRODUCT";
 
         sql = sql.replace("$ORDER",""+order);
@@ -36,13 +36,13 @@ public class ArticleProvider {
         amounts -= amount;
 
         if(amounts > 0){
-            sql = "UPDATE A00365567-Articulos SET cantidad = $CANTIDAD"
+            sql = "UPDATE A00365567_Articulos SET cantidad = $CANTIDAD"
                     + " WHERE id = $ID AND tag = $TAG";
             sql = sql.replace("$CANTIDAD",""+amounts);
             sql = sql.replace("$ID",""+orders);
             sql = sql.replace("$TAG",""+products);
         }else{
-            sql = "DELETE FROM articlesA00368822"
+            sql = "DELETE FROM A00365567_Articulos"
                     + " WHERE id = $ID AND tag = $TAG";
             sql = sql.replace("$ID",""+orders);
             sql = sql.replace("$TAG",""+products);

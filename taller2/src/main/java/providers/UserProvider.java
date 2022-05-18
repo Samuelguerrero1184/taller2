@@ -11,7 +11,7 @@ public class UserProvider {
 
     public void create(User user) throws SQLException, ClassNotFoundException {
         DBConnection con = new DBConnection();
-        String sql = "INSERT INTO A00365567-Usuarios(identificacion, nombre) VALUES ('$IDENTIFICACION','$NOMBRE')";
+        String sql = "INSERT INTO A00365567_User(identificacion, nombre) VALUES ('$IDENTIFICACION','$NOMBRE')";
         sql = sql.replace("$IDENTIFICACION",user.getIdentificacion());
         sql = sql.replace("$NOMBRE",user.getNombre());
         System.out.println(sql);
@@ -21,7 +21,7 @@ public class UserProvider {
 
     public Historial getInfo(String user) throws SQLException, ClassNotFoundException {
         DBConnection con = new DBConnection();
-        String sql = "SELECT * FROM A00365567-Orders"
+        String sql = "SELECT * FROM A00365567_Orders"
                 +" WHERE identificacion = '$USER'";
         sql = sql.replace("$USER",user);
 

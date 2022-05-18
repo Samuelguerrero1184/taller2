@@ -14,7 +14,7 @@ public class OrderProvider {
 
     public void createOrder(Order order) throws SQLException {
         DBConnection con = new DBConnection();
-        String sql = "INSERT INTO A00365567-OrderS(id,fecha,pago,fecha_pago,identificacion)"
+        String sql = "INSERT INTO A00365567_Orders(id,fecha,pago,fecha_pago,identificacion)"
                 + "VALUES ($ID,$FECHA,$PAGO,$FECHA_PAGO,$IDENTIFICACION)";
         sql = sql.replace("$ID",""+order.getId());
         sql = sql.replace("$FECHA",""+order.getFecha());
@@ -32,7 +32,7 @@ public class OrderProvider {
     public void changeStatus(int order) throws SQLException, ClassNotFoundException {
         DBConnection con = new DBConnection();
         long time = System.currentTimeMillis();
-        String sql = "UPDATE A00365567-Orders SET pago = $PAGO, fecha_pago = $FECHA_PAGO"
+        String sql = "UPDATE A00365567_Orders SET pago = $PAGO, fecha_pago = $FECHA_PAGO"
                 +" WHERE id = $ID";
         sql = sql.replace("$ID",""+order);
         sql = sql.replace("$PAGO",""+true);
@@ -44,7 +44,7 @@ public class OrderProvider {
 
     public Report getInfo(int order) throws SQLException, ClassNotFoundException {
         DBConnection con = new DBConnection();
-        String sql = "SELECT * FROM A00365567-Articulos"
+        String sql = "SELECT * FROM A00365567_Articulos"
                 +" WHERE id = $ORDER";
         sql = sql.replace("$ORDER",""+order);
 
@@ -60,7 +60,7 @@ public class OrderProvider {
         }
 
         for(int i = 0; i<articles.size(); i++){
-            sql = "SELECT * FROM A00365567-Productos"
+            sql = "SELECT * FROM A00365567_Productos"
                     +" WHERE id = $ID";
             sql = sql.replace("$ID",""+articles.get(i).getTag());
             ResultSet product = con.getData(sql);
